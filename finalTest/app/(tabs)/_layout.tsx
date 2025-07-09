@@ -43,13 +43,12 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="feedback"
+        name="history"
         options={{
-          title: 'Ai Feedback',
+          title: 'history',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
       />
-
        <Tabs.Screen
         name="profile"
         options={{
