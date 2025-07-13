@@ -48,21 +48,25 @@ export default function Login() {
          body: JSON.stringify({ email, password }),
        }); 
 
-       const re =  await response.json();
+ 
 
-       console.log("response :" , re) ; 
-
+      
+       const authorization = response.headers.get('Authorization');
+       AsyncStorage.setItem("accessToken" , authorization); 
+       console.log(authorization)
+       
+      
        if (!response.ok) {
-         throw new Error("이메일 또는 비밀번호가 맞지않습니다.");
+        const message =  await response.text();
+         throw new Error(message);
        }
+       router.push({
+        pathname: '/(tabs)/home',
+      });
      } catch (error) {
-       console.error(error);
        setError(error.message);
      }
-   router.push({
-    pathname: '/(tabs)/home',
-    params: {nickname: "태용짱" } // mock data 
-  });
+
   };
 
 

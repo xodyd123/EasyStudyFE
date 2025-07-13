@@ -4,7 +4,6 @@ import { useLocalSearchParams , useRouter } from 'expo-router';
 
 export default function HomeScreen() {
   
-  const { userId, nickname } = useLocalSearchParams(); 
   
   const router = useRouter(); 
 

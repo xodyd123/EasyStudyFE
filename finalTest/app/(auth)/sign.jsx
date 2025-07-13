@@ -7,10 +7,9 @@ export default function Sign() {
     const [user, setUser] = useState({
         email: '',
         nickname: '',
-        password: '',
-        verifyPassword: '', 
-        viewPassword : '' , 
-        verifyViewPassword : '' , 
+        password: '', 
+        verifyPassword : '' , 
+     
     }); 
 
     useEffect(() => {
@@ -51,15 +50,15 @@ export default function Sign() {
 
     const changePassword = (text) => {
    
-      const changePassword =  replace(text) ;
+    //1 const changePassword =  replace(text) ;
      
-      setUser({...user, viewPassword: changePassword , password : text.trim()}); // 이게 바껴서 넣으니 안됨  
+      setUser({...user, password : text.trim()}); // 이게 바껴서 넣으니 안됨  
     }
 
     const changeVerifyPassword = (text) => { 
 
-       const changePassword =  replace(text) ;
-        setUser({...user, verifyPassword: text.trim() , verifyViewPassword : changePassword , });
+      // const changePassword =  replace(text) ;
+        setUser({...user, verifyPassword: text.trim() });
         checkPassword(text);
     }
 
@@ -88,19 +87,18 @@ export default function Sign() {
             }),
         } )
         if(!response.ok){ 
-          const errorData = await response.json() ;
-          throw new Error(errorData.message ) ;  
+          const errorData = await response.text() ;
+          throw new Error(errorData) ;  
         }
 
         router.push('/login');  
 
         } catch(error){
           setEmptyError(error.message) ; 
+          console.log(error.message)
           
         }
 
-
-      
       
     }   
 
@@ -134,10 +132,10 @@ export default function Sign() {
             <TextInput style={styles.input} placeholder="닉네임을을 입력해주세요" value={user.nickname} onChangeText={(text) => changeNickName(text)} />
             
             <Text style={styles.label2}>Password</Text>
-                <TextInput style={styles.input} placeholder="Password를 입력해주세요" value={user.viewPassword} onChangeText={(text) => changePassword(text)} /> 
+                <TextInput style={styles.input} placeholder="Password를 입력해주세요" value={user.password} onChangeText={(text) => changePassword(text)} /> 
 
             <Text style={styles.label3}>Verify Password</Text>
-            <TextInput style={styles.input} placeholder="Password를 한번 더 입력해주세요" value={user.verifyViewPassword} onChangeText={(text) => changeVerifyPassword(text)} />
+            <TextInput style={styles.input} placeholder="Password를 한번 더 입력해주세요" value={user.viewPassword} onChangeText={(text) => changeVerifyPassword(text)} />
             {user.verifyPassword && passwordError && <Text style={styles.passwordError}>{passwordError}</Text>}
             {emptyError && <Text style={{ color: "red" }}>{emptyError}</Text>}
             <TouchableOpacity style={styles.Button} onPress={onSubmit}>

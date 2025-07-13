@@ -9,7 +9,7 @@ import { Slot } from 'expo-router';
 export default function RootLayout() {
 
   const [accessToken, setAccessToken] = useState('');
-  const [refreshToken, setRefreshToken] = useState('');
+  //const [refreshToken, setRefreshToken] = useState('');
 
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
@@ -17,10 +17,11 @@ export default function RootLayout() {
 
   useEffect(() => {
     const getTokens = async () => {
-      const rAccessToken = await AsyncStorage.getItem('accessToken') || ''; 
-      const re = await AsyncStorage.getItem("refreshToken") || ''; 
-      setAccessToken(rAccessToken);
-      setRefreshToken(re);  
+      const AccessToken = await AsyncStorage.getItem('accessToken') || ''; 
+     // const re = await AsyncStorage.getItem("refreshToken") || ''; 
+      setAccessToken(AccessToken);
+     // setRefreshToken(re);  
+      console.log("rAccessToken : " + AccessToken) ;
     };
     getTokens();
   }, []); // 의존성 배열을 비워두어 컴포넌트가 마운트될 때만 실행
@@ -30,12 +31,8 @@ export default function RootLayout() {
   }
 
   return (
-    <AuthContext.Provider value={{ accessToken, refreshToken }}>
-     
-      <Slot /> 
-
-    
-        
+    <AuthContext.Provider value={{ accessToken}}>
+      <Slot />   
     </AuthContext.Provider>
   );
 }
