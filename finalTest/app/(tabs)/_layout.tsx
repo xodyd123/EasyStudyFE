@@ -44,13 +44,27 @@ export default function TabLayout() {
         }}
       />
 
-       <Tabs.Screen
+       {/* <Tabs.Screen
         name="profile"
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
         }}
+      /> */} 
+
+            {/* ✨ 여기에 채팅 화면 추가 ✨ */}
+        <Tabs.Screen
+        name="chat" // 파일 이름은 app/(tabs)/chat.jsx
+        options={{
+          // 1. 탭 바에서 이 화면을 숨깁니다.
+          tabBarStyle: { display: 'none' },
+          
+          // 2. 탭 메뉴에 버튼이 표시되지 않도록 합니다.
+          href: null, 
+        }}
       />
     </Tabs>
   );
+
+  
 }

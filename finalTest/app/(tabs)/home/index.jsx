@@ -1,11 +1,15 @@
 import {View, Text , StyleSheet, Pressable} from 'react-native';
-import { useLocalSearchParams , useRouter } from 'expo-router';
+import {  useRouter } from 'expo-router';
+
 
 
 export default function HomeScreen() {
   
   
-  const router = useRouter(); 
+  const router = useRouter();  
+
+
+  
 
   return (
     <View style={styles.container}> 
@@ -15,7 +19,7 @@ export default function HomeScreen() {
       <View>
         <Text>이미지 넣는 칸</Text>
       </View>
-      <Pressable style={styles.button} onPress={()=> router.push("/(tabs)/home/ChatHome")}>
+      <Pressable style={styles.button} onPress={()=> router.push("(tabs)/home/chat")}>
         <Text style = {styles.text} >대화 테스트</Text>
       </Pressable>
       <Pressable style={styles.button}>

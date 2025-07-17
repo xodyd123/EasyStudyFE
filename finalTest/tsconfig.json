@@ -13,5 +13,5 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts"
-, "app/(tabs)/index.jsx", "app/(error)/+not-found.jsx", "app/_layout.jsx"  ]
+, "app/(tabs)/index.jsx", "app/(error)/+not-found.jsx", "app/_layout.jsx", "app/(tabs)/home/chat.tsx"  ]
 }
